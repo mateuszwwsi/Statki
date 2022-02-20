@@ -1,0 +1,45 @@
+﻿@page
+@model wwsi.ti.rudnik.jachty.Pages.JachtyModel
+@{
+}
+<div class="text-center">
+    <h1 class="display-4">Nasza oferta jachtów</h1>
+</div>
+
+<section>
+    <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center">
+                    <span class="text-primary">Jachty Rudnik</span>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var j in Model.mj)
+                {
+
+                    <div class="col-md-6 col-lg-4 mb-4 shadow p-3 mb-5 bg-body rounded">
+                        <div>
+                            <img src="@j.Zdjecie" alt="Image" class="img-fluid" style="width: 450px; height: 300px;">
+                            <div class="text-center">
+                                <h3><span class="">@j.Nazwa</span></h3>
+                                <h2>Model - @j.Model</h2>
+                                <div>Typ jachtu - @j.Typ</div>
+                                <div>
+                                    <span class="badge bg-primary rounded-pill text-white">Załoga @j.Zaloga</span>&nbsp;
+                                    <span class="badge bg-success rounded-pill text-white">Kajuty @j.Kajuty</span>
+                                </div>
+         
+                                <div>Cena za dobę - @j.Cena</div>
+                                
+                                <a asp-page="/Rezerwacja" asp-route-JachtID="@j.ID"
+                                   class="btn btn-primary btn-lg btn-block">Rezerwuj</a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

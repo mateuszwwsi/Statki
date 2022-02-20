@@ -1,0 +1,98 @@
+﻿@page
+@model wwsi.ti.rudnik.jachty.Pages.RezerwacjaModel
+@{
+}
+<div class="text-center">
+    <h1 class="display-4">Formularz tworzenia rezerwacji</h1>
+    <h4 class="font-weight-bold">Wybrano @Model.jacht.Nazwa Model: @Model.jacht.Model</h4>
+</div>
+
+@if (Model.r.Ret==200)
+            {
+                <div class="h1 font-weight-bold text-center">
+                    Zarezerwowano! Zapisz numer rezerwacji: @Model.r.Numer
+                </div>
+                <div class="h1 font-weight-bold text-center">
+                    Całkowity koszt rezerwacji: @Model.r.Calosc PLN
+                </div>
+            }
+
+@if (Model.r.Ret ==400)
+            {
+                <div class="h1 font-weight-bold">
+                    Upsss.... Coś poszło nie tak, wybrany termin jest już zajęty!
+                </div>
+            }
+
+<container>
+    <div class="text-center col-6">
+        <form method="post" asp-page-handler="">
+            <div class="text-center">
+                <div class="form-group col-6">
+                    <label for="FirstName">Nazwisko</label>
+                    <div class="col-12 form-group">
+                        <input class="form-control vaid"
+                               name="Nazwisko"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group col-6 text-center">
+                <label for="LastName">Imię</label>
+                <div class="col-12 form-group">
+                    <input class="form-control vaid"
+                           name="Imie"
+                           type="text">
+                </div>
+            </div>
+            <div class="form-group col-6 text-center">
+                <label for="Email">Email</label>
+                <div class="col-12 form-group">
+                    <input class="form-control vaid"
+                           name="Mail"
+                           type="text">
+                </div>
+            </div>
+            <div class="form-group col-6 text-center">
+                <label for="PhoneNumber">Telefon</label>
+                <div class="col-12 form-group">
+                    <input class="form-control vaid"
+                           name="Telefon"
+                           type="text">
+                </div>
+            </div>
+            <div class="form-group col-6 text-center">
+                <label for="DateFrom">Data od</label>
+                <div class="col-12 form-group">
+                    <input class="form-control"
+                           name="Od"
+                           type="date">
+                </div>
+            </div>
+            <div class="form-group col-6 text-center">
+                <label for="DateTo">Data do</label>
+                <div class="col-12 form-group">
+                    <input class="form-control"
+                           name="Do"
+                           type="date">
+                </div>
+            </div>
+            <div class="col-6 form-group text-center">
+                <label for="Remarks">Uwagi</label>
+                <textarea class="form-control" rows="3" id="DodatkoweInformacje" name="DodatkoweInformacje"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="col-12">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Utwórz rezerwację">
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <div class="invisible">
+                    <div class="col-12 form-group"><input class="form-control" id="JachtID" name="JachtID" type="text" value="@Model.jacht.ID"></div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</container>
